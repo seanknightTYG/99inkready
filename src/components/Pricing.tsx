@@ -56,7 +56,7 @@ export default function Pricing() {
     <section className="pricing-section" id="pricing">
       <div className="max-w">
         <div className="section-label">Pricing</div>
-        <h2 className="section-title">Pay Only<br />When You Print.</h2>
+        <h2 className="section-title">Pay What<br />You Print.</h2>
         <p className="section-body">
           No monthly subscription. No seat fees. Buy a pack of credits. A credit fires only when
           you and your customer approve a final design and you download the print-ready file.

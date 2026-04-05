@@ -23,6 +23,18 @@ const cards = [
     title: '$26,000 a Year. Gone.',
     body: 'At $75/hr, 5 bad files a week = $500 in unbilled labor. Every week. That\'s $26,000 a year you\'re giving away for free.',
   },
+  {
+    num: '05',
+    tag: 'The Competition',
+    title: 'They Found It On Custom Ink.',
+    body: "A screenshot from someone else's product page. \"Can you match this, but local?\" You can. But what they sent is a compressed JPEG of a finished product. That's not a file. That's a wish.",
+  },
+  {
+    num: '06',
+    tag: 'The Revision Loop',
+    title: 'Round 8. "Go Back To The First One."',
+    body: 'Round 1: "Perfect!" Round 3: "Can we try it in blue?" Round 8: "Actually, go back to the original." Three hours of your time. $0 billed. The first version was fine.',
+  },
 ]
 
 export default function ProblemSection() {

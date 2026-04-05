@@ -6,10 +6,10 @@ const options = [
     body: "If you or your developer can edit your website's HTML, paste the snippet before the closing body tag. Takes 60 seconds. We'll send you your Shop ID when you sign up.",
   },
   {
-    tag: 'Option 2 · White Glove',
+    tag: 'Option 2 · White Glove · $99 One-Time',
     icon: '🤝',
     title: 'We Install It For You',
-    body: '99 Agents Agency builds websites. We can drop InkReady into any existing site — WordPress, Shopify, Squarespace, custom HTML — in under an hour. Chat with us below.',
+    body: '99 Agents Agency builds websites. We can drop InkReady into any existing site — WordPress, Shopify, Squarespace, custom HTML — in under an hour. One-time $99 install fee. Chat with us below.',
   },
   {
     tag: 'Option 3 · WordPress',

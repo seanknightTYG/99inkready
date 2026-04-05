@@ -2,6 +2,7 @@ import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import ProblemBand from '@/components/ProblemBand'
 import ProblemSection from '@/components/ProblemSection'
+import IndustriesSection from '@/components/IndustriesSection'
 import HowItWorks from '@/components/HowItWorks'
 import Screenshots from '@/components/Screenshots'
 import VideoSection from '@/components/VideoSection'
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <ProblemBand />
         <ProblemSection />
+        <IndustriesSection />
         <HowItWorks />
         <Screenshots />
         <VideoSection />
