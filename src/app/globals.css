@@ -94,8 +94,8 @@ input:focus-visible {
 }
 .nav-links a {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 15px;
+  letter-spacing: 0.06em;
   color: var(--gray);
   text-decoration: none;
   text-transform: uppercase;
@@ -104,9 +104,9 @@ input:focus-visible {
 .nav-links a:hover { color: var(--white); }
 .nav-cta {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  padding: 10px 20px;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  padding: 10px 22px;
   background: var(--orange);
   color: var(--on-green);
   border: none;

@@ -15,13 +15,14 @@ export default function Hero() {
           <span className="accent">Art.</span>
         </h1>
         <p className="hero-sub fade-up delay-1">
-          <strong>InkReady</strong> is a free AI design widget that lives on your print shop&apos;s website.
-          Customers generate concepts for free. You approve the one you love.{' '}
-          <strong>Download a 300 DPI print-ready file in one click.</strong>
+          <strong>99agents InkReady</strong> tool is a free AI design widget that lives on your print shop&apos;s website.
+          Your customers bring the ideas — your shop brings the print. They generate concepts until they nail it.
+          You both agree on the final design. One click gets you a 300 DPI print-ready file.{' '}
+          <strong>From your customer&apos;s imagination to your embellishment — no bad files, no free design hours, no infinite email loops.</strong>
         </p>
         <p className="hero-sub hero-sub-model fade-up delay-2">
           Powered by benchmark-tested AI image models — we run the latest, highest-performing generation
-          engine available. Currently: <strong>Gemini Flash 2.0 Image.</strong> We update automatically
+          engine available. Currently: <strong>Gemini 3.1 Flash Image.</strong> We update automatically
           as better models ship. Your shop always gets the best.
         </p>
         <div className="hero-actions fade-up delay-2">
