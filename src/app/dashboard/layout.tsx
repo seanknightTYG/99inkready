@@ -7,23 +7,44 @@ import { fetchWithAuth } from '@/lib/api';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { getToken } = useAuth();
+  const { getToken, isLoaded, user } = useAuth();
   const [balance, setBalance] = useState<number>(0);
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
-    async function loadBalance() {
+    async function loadData() {
       try {
         const token = await getToken();
-        if (token) {
+        if (token && user) {
+          // Idempotent registration
+          await fetchWithAuth('/api/v1/tenants/register', token, {
+            method: 'POST',
+            body: JSON.stringify({ 
+              tenant_id: user.id,
+              name: '',
+              email: ''
+            })
+          });
+
+          // Check credits/purchases
           const res = await fetchWithAuth('/api/v1/credits', token);
           setBalance(res?.balance || 0);
+
+          if (res && res.has_purchased === false && !pathname.includes('/onboarding')) {
+            window.location.href = '/dashboard/onboarding';
+            return;
+          }
         }
       } catch (e) {
-         console.error('Failed to load balance', e);
+         console.error('Failed to load dashboard data', e);
+      } finally {
+        setIsReady(true);
       }
     }
-    loadBalance();
-  }, [getToken]);
+    if (isLoaded) loadData();
+  }, [getToken, user, isLoaded, pathname]);
+
+  if (!isReady) return <div className="min-h-screen bg-zinc-950 flex items-center justify-center text-white"><span className="loading loading-spinner loading-lg"></span></div>;
 
   const navs = [
     { label: 'Art Vault', path: '/dashboard' },
