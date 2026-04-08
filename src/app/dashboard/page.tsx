@@ -1,39 +1,29 @@
 'use client';
-
 import { useAuth } from '@clerk/nextjs';
 import { useEffect, useState } from 'react';
 import { fetchWithAuth } from '@/lib/api';
 
-export default function Dashboard() {
+export default function VaultPage() {
   const { getToken } = useAuth();
   const [designs, setDesigns] = useState<any[]>([]);
-  const [leads, setLeads] = useState<any[]>([]);
-  const [credits, setCredits] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [activeJob, setActiveJob] = useState<{ id: string, status: string } | null>(null);
 
   useEffect(() => {
-    async function loadData() {
+    async function load() {
       try {
         const token = await getToken();
-        if (!token) return;
-
-        const [designsRes, leadsRes, creditsRes] = await Promise.all([
-          fetchWithAuth('/api/v1/vault', token),
-          fetchWithAuth('/api/v1/leads', token),
-          fetchWithAuth('/api/v1/credits', token)
-        ]);
-
-        setDesigns(designsRes.designs || []);
-        setLeads(leadsRes.leads || []);
-        setCredits(creditsRes.balance || 0);
+        if (token) {
+          const res = await fetchWithAuth('/api/v1/vault', token);
+          setDesigns(res?.designs || []);
+        }
       } catch (e) {
-        console.error('Failed to load dashboard data:', e);
+        console.error(e);
       } finally {
         setLoading(false);
       }
     }
-    loadData();
+    load();
   }, [getToken]);
 
   const handleUnlock = async (designId: string) => {
@@ -43,151 +33,88 @@ export default function Dashboard() {
         method: 'POST',
         body: JSON.stringify({ design_id: designId })
       });
-      
       setActiveJob({ id: designId, status: 'queued' });
       
-      // Start SSE progress stream
       const source = new EventSource(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.inkready.99agents.agency'}/api/v1/vault/unlock/${job_id}/stream`);
-      
       source.onmessage = (e) => {
         const data = JSON.parse(e.data);
         setActiveJob({ id: designId, status: data.status });
-        
         if (data.status === 'ready' || data.status === 'failed') {
           source.close();
           setActiveJob(null);
-          // Quick reload to show updated designs & credits
-          window.location.reload(); 
+          // Wait briefly before reloading so backend state has fully committed
+          setTimeout(() => window.location.reload(), 1000); 
         }
+      };
+      source.onerror = (e) => {
+        console.error("SSE Error:", e);
+        source.close();
+        setActiveJob(null);
       };
     } catch (e) {
       alert((e as Error).message);
     }
   };
 
-  const handleBuyCredits = async () => {
-    const token = await getToken();
-    try {
-      const { checkout_url } = await fetchWithAuth('/api/v1/credits/purchase', token, {
-        method: 'POST',
-        body: JSON.stringify({ pack_tier: 'shop' }) // default to 'shop' pack for quick test
-      });
-      if (checkout_url) window.location.href = checkout_url;
-    } catch (e) {
-      alert((e as Error).message);
-    }
-  };
-
-  if (loading) return <div className="p-12 text-center text-white/50">Loading Secure Print Vault...</div>;
+  if (loading) return <div className="text-zinc-500 animate-pulse text-lg">Loading Art Vault...</div>;
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white p-8 space-y-12 max-w-7xl mx-auto">
-      <header className="flex items-center justify-between border-b border-white/10 pb-6 mb-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Print Vault</h1>
-          <p className="text-zinc-400 mt-1">Manage designs, upscale requests, and lead captures.</p>
-        </div>
-        <div className="flex gap-6 items-center">
-          <div className="flex flex-col items-end">
-            <span className="text-sm text-zinc-400 uppercase tracking-widest font-semibold">Available</span>
-            <span className="text-2xl font-bold font-mono text-zinc-100">{credits} Credits</span>
-          </div>
-          <button 
-            onClick={handleBuyCredits} 
-            className="bg-white text-black px-6 py-3 rounded-lg font-bold hover:bg-zinc-200 transition-colors shadow-lg"
-          >
-            Refill Credits
-          </button>
-        </div>
-      </header>
+    <div className="max-w-7xl">
+      <div className="mb-8 flex items-baseline justify-between">
+        <h2 className="text-3xl font-bold tracking-tight">Art Vault</h2>
+        <span className="text-zinc-500">{designs.length} Generation{designs.length !== 1 ? 's' : ''}</span>
+      </div>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
-          Customer Designs <span className="text-sm bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-full">{designs.length}</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {designs.length === 0 ? (
+        <div className="text-zinc-500 mt-12 py-32 text-center border border-dashed border-white/10 rounded-xl bg-zinc-900/40 shadow-inner">
+          <p className="text-lg">No designs yet</p>
+          <p className="text-sm mt-2 opacity-60">When customers generate concepts, they will appear here.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {designs.map(d => (
-            <div key={d.id} className="border border-white/10 rounded-xl overflow-hidden bg-zinc-900 shadow-xl flex flex-col">
-              <div className="relative h-64 bg-zinc-950 flex items-center justify-center p-4">
-                <img src={d.draft_url || d.hires_url || 'https://placehold.co/600x400/18181b/52525b?text=Preview+Loading'} alt="Design" className="max-h-full max-w-full object-contain rounded" />
+             <div key={d.id} className="border border-white/10 rounded-xl overflow-hidden bg-zinc-900 shadow-2xl flex flex-col group">
+              <div className="relative h-72 bg-[#121214] flex items-center justify-center p-6 border-b border-white/5">
+                <img src={d.draft_url || d.hires_url || 'https://placehold.co/600x400/121214/52525b?text=Image+Loading'} alt="Design" className="max-h-full max-w-full object-contain rounded drop-shadow-xl" />
+                
                 {activeJob?.id === d.id && (
-                  <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center backdrop-blur-sm">
-                    <span className="loading loading-spinner text-white mb-4"></span>
-                    <p className="font-mono text-sm uppercase tracking-widest animate-pulse">Running: {activeJob.status}</p>
+                  <div className="absolute inset-0 bg-zinc-950/90 flex flex-col items-center justify-center backdrop-blur-md">
+                    <span className="loading loading-spinner loading-lg text-emerald-500 mb-6"></span>
+                    <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400 animate-pulse">{activeJob.status}</p>
                   </div>
                 )}
               </div>
-              <div className="p-5 flex-1 flex flex-col justify-between border-t border-white/5">
+              <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-medium text-lg leading-tight truncate pr-4">{d.prompt || 'Untitled Print'}</h3>
-                    <span className="text-xs bg-zinc-800 px-2 py-1 rounded-full text-zinc-400 uppercase font-semibold">{d.product_type || 'Unknown'}</span>
+                  <h3 className="font-bold text-lg text-white mb-2 leading-tight">{d.prompt || 'Untitled Print'}</h3>
+                  <div className="flex gap-2 text-xs font-semibold uppercase tracking-wider mb-6">
+                    <span className="bg-zinc-800 text-zinc-300 px-2 py-1 rounded">{d.product_type}</span>
+                    <span className={`px-2 py-1 rounded ${d.status === 'upscaled' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-blue-500/20 text-blue-400'}`}>{d.status}</span>
                   </div>
-                  <p className="text-zinc-500 text-sm mb-4">Status: <span className="capitalize">{d.status}</span></p>
                 </div>
                 
                 {d.status === 'draft' && (
-                  <button 
-                    onClick={() => handleUnlock(d.id)} 
-                    disabled={activeJob?.id === d.id}
-                    className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-lg font-bold text-sm transition-colors shadow disabled:opacity-50"
-                  >
-                    Unlock 4K Final (1 Credit)
+                  <button onClick={() => handleUnlock(d.id)} disabled={activeJob?.id === d.id} className="w-full bg-white hover:bg-zinc-200 text-black py-3.5 rounded-lg font-bold text-sm shadow transition-colors disabled:opacity-50 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Unlock 4K Final <span className="opacity-60 font-normal ml-1">(1 Credit)</span>
                   </button>
                 )}
                 {d.status === 'upscaled' && (
-                  <a 
-                    href={d.hires_url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex text-center justify-center w-full bg-emerald-500 hover:bg-emerald-400 text-black py-3 rounded-lg font-bold text-sm transition-colors shadow"
-                  >
+                  <a href={d.hires_url} target="_blank" rel="noopener noreferrer" className="flex text-center justify-center w-full bg-emerald-500 hover:bg-emerald-400 text-black py-3.5 rounded-lg font-bold text-sm shadow transition-colors gap-2 items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                     Download Print File
                   </a>
                 )}
                 {d.status === 'processing' && (
-                  <button disabled className="w-full bg-zinc-800 text-zinc-500 py-3 rounded-lg font-bold text-sm cursor-not-allowed">
-                    Upscaling...
+                  <button disabled className="w-full bg-zinc-800 text-zinc-500 py-3.5 rounded-lg font-bold text-sm cursor-not-allowed border border-white/5">
+                    Job running in background...
                   </button>
                 )}
               </div>
             </div>
           ))}
-          {designs.length === 0 && (
-            <div className="col-span-full text-zinc-500 py-24 text-center border border-dashed border-white/10 rounded-xl bg-zinc-900/50">
-              <p>No customer prints generated yet.</p>
-              <p className="text-sm mt-2">When a customer finishes an AI design, it appears here.</p>
-            </div>
-          )}
         </div>
-      </section>
-
-      <section>
-        <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
-          Captured CRM Leads <span className="text-sm bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-full">{leads.length}</span>
-        </h2>
-        <div className="border border-white/10 rounded-xl bg-zinc-900 overflow-hidden shadow-xl">
-          {leads.map(l => (
-            <div key={l.id} className="p-5 border-b border-white/5 last:border-0 hover:bg-zinc-800/50 transition-colors flex items-center justify-between">
-              <div>
-                <p className="font-bold text-lg">{l.name}</p>
-                <div className="flex items-center gap-3 text-zinc-400 text-sm mt-1">
-                  <span>{l.email}</span>
-                  {l.phone && <><span>•</span><span>{l.phone}</span></>}
-                </div>
-              </div>
-              <div className="text-xs text-zinc-500 bg-zinc-950 px-3 py-1 rounded font-mono">
-                {new Date(l.created_at).toLocaleDateString()}
-              </div>
-            </div>
-          ))}
-          {leads.length === 0 && (
-            <div className="p-12 text-zinc-500 text-center">
-              No highly-activated leads captured yet. Lead gate fires at 10 drafts.
-            </div>
-          )}
-        </div>
-      </section>
+      )}
     </div>
   );
 }
