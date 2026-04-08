@@ -80,7 +80,7 @@ export default function VaultPage() {
                 {activeJob?.id === d.id && (
                   <div className="absolute inset-0 bg-zinc-950/90 flex flex-col items-center justify-center backdrop-blur-md">
                     <span className="loading loading-spinner loading-lg text-emerald-500 mb-6"></span>
-                    <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400 animate-pulse">{activeJob.status}</p>
+                    <p className="font-mono text-sm uppercase tracking-[0.2em] text-emerald-400 animate-pulse">{activeJob?.status}</p>
                   </div>
                 )}
               </div>

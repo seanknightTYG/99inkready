@@ -60,7 +60,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <span className="font-bold font-mono text-emerald-400">{balance}</span>
           </Link>
           <div className="border-l border-white/10 h-6"></div>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </header>
         <main className="flex-1 p-10 overflow-y-auto max-h-[calc(100vh-72px)] bg-zinc-950">
           {children}
