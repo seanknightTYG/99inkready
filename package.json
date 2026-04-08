@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:widget": "esbuild src/widget/widget.src.js --bundle --minify --outfile=public/widget.js",
+    "prebuild": "npm run build:widget"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.0.11",
@@ -19,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.28.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
     "tailwindcss": "^4",
