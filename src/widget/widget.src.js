@@ -10,7 +10,7 @@
   const customColor = currentScript.getAttribute('data-primary-color') || '#3b82f6'; 
 
   if (!shopId) {
-    console.error('REZIFY Widget: Missing data-shop attribute');
+    console.error('Rezify.io Widget: Missing data-shop attribute');
     return;
   }
 
@@ -81,10 +81,10 @@
       shadow.innerHTML = `
         <style>${style}</style>
         <div class="widget-container">
-          <div class="header">REZIFY</div>
+          <div class="header">Rezify.io</div>
           <div class="content">
             <div class="msg-box">
-              This shop has not activated REZIFY.<br/><br/>
+              This shop has not activated Rezify.io.<br/><br/>
               <a href="https://99rezify.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99rezify.vercel.app to get started.</a>
             </div>
           </div>

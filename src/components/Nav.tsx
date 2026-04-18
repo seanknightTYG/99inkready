@@ -1,7 +1,7 @@
 export default function Nav() {
   return (
     <nav className="nav" aria-label="Main navigation">
-      <div className="nav-logo">Ink<span>Ready</span></div>
+      <div className="nav-logo">Rezify<span>.io</span></div>
       <ul className="nav-links">
         <li><a href="#problem">The Problem</a></li>
         <li><a href="#how">How It Works</a></li>

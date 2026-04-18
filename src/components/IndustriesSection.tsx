@@ -7,7 +7,7 @@ const industries = [
   {
     icon: '👕',
     name: 'Apparel Shops',
-    desc: 'T-shirts, screen print, DTF, DTG — it doesn\'t matter how you apply it. REZIFY gets you print-ready art at the right dimensions every time. Your press stays busy. Your inbox doesn\'t.',
+    desc: 'T-shirts, screen print, DTF, DTG — it doesn\'t matter how you apply it. Rezify.io gets you print-ready art at the right dimensions every time. Your press stays busy. Your inbox doesn\'t.',
   },
   {
     icon: '🚗',
@@ -23,7 +23,7 @@ export default function IndustriesSection() {
         <div className="section-label">Who It&apos;s For</div>
         <h2 className="section-title">Built for Every<br />Shop That Prints.</h2>
         <p className="section-body">
-          If your customers hand you art files, REZIFY is for you.
+          If your customers hand you art files, Rezify.io is for you.
           Any shop type. Any product. Any platform.
         </p>
         <div className="industries-grid">

@@ -7,9 +7,9 @@ export default function ChatSection() {
           {/* Chat mockup */}
           <div className="chat-mock">
             <div className="chat-topbar">
-              <div className="chat-avatar" aria-hidden="true">IR</div>
+              <div className="chat-avatar" aria-hidden="true">R</div>
               <div>
-                <div className="chat-name">REZIFY Team</div>
+                <div className="chat-name">Rezify.io Team</div>
                 <div className="chat-status">Online now</div>
               </div>
             </div>
@@ -17,7 +17,7 @@ export default function ChatSection() {
               <div>
                 <div className="msg them">
                   Hey! We&apos;re Sean and Matthew — we run a sign shop in Humboldt County and built
-                  REZIFY for ourselves first. What questions do you have?
+                  Rezify.io for ourselves first. What questions do you have?
                 </div>
                 <div className="msg-time">Sean · just now</div>
               </div>
@@ -48,24 +48,23 @@ export default function ChatSection() {
           <div className="chat-copy">
             <h3>Real Shop Owners.<br />Real Answers.</h3>
             <p>
-              We&apos;re not a call center. We&apos;re Sean Knight and Matthew McMahon — we run Lost
-              Coast Signs &amp; Swag in Eureka, CA and 99 Agents Agency. We built REZIFY for our own
-              shop. We know your questions because we had them first.
+              We&apos;re not a call center. We&apos;re shop owners just like you. We built Rezify.io for our own
+              shops. We know your questions because we had them first.
             </p>
             <div className="team-cards">
               <div className="team-card">
                 <div className="t-name">Sean Knight</div>
                 <div className="t-role">Co-Founder</div>
-                <div className="t-bio">Lost Coast Signs &amp; Swag · 99 Agents Agency · Eureka, CA</div>
+                <div className="t-bio">Product &amp; Design · Print &amp; Sign Industry</div>
               </div>
               <div className="team-card">
                 <div className="t-name">Matthew McMahon</div>
                 <div className="t-role">Co-Founder</div>
-                <div className="t-bio">Lost Coast Signs &amp; Swag · Print &amp; Sign Industry · Eureka, CA</div>
+                <div className="t-bio">Operations &amp; Strategy · Print &amp; Sign Industry</div>
               </div>
             </div>
             <a
-              href="mailto:hello@99agents.agency"
+              href="mailto:hello@rezify.io"
               className="btn-primary"
               style={{ marginTop: '0.5rem', textAlign: 'center' }}
             >

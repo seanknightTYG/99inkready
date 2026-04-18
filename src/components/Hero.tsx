@@ -7,7 +7,7 @@ export default function Hero() {
 
       {/* Left — copy */}
       <div className="hero-content">
-        <div className="hero-eyebrow">A 99 Agents Agency Product · lostcoastsigns.com</div>
+
         <h1 className="fade-up">
           Stop<br />
           Printing<br />
@@ -15,7 +15,7 @@ export default function Hero() {
           <span className="accent">Art.</span>
         </h1>
         <p className="hero-sub fade-up delay-1">
-          <strong>99agents REZIFY</strong> tool is a free AI design widget that lives on your print shop&apos;s website.
+          <strong>Rezify.io</strong> tool is a free AI design widget that lives on your print shop&apos;s website.
           Your customers bring the ideas — your shop brings the print. They generate concepts until they nail it.
           You both agree on the final design. One click gets you a 300 DPI print-ready file.{' '}
           <strong>From your customer&apos;s imagination to your embellishment — no bad files, no free design hours, no infinite email loops.</strong>
@@ -32,7 +32,7 @@ export default function Hero() {
         <div className="hero-proof fade-up delay-3">
           <div className="proof-dot" aria-hidden="true"></div>
           <div className="proof-text">
-            Running live at <span>lostcoastsigns.com</span> · Built by shop owners · No monthly fee
+            Running live at <span>Rezify.io</span> · Built by shop owners · No monthly fee
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ export default function Hero() {
       <div className="hero-visual fade-up delay-2" aria-hidden="true">
         <Image
           src="/rocket_art2.png"
-          alt="An astronaut riding a creative rocket with paint brushes — REZIFY hero illustration"
+          alt="An astronaut riding a creative rocket with paint brushes — Rezify.io hero illustration"
           width={600}
           height={338}
           priority
