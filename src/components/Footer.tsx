@@ -32,7 +32,7 @@ export default function Footer() {
       </div>
       <div className="max-w">
         <div className="footer-copy">
-          <span>© 2025 InkReady · 99 Agents Agency · Eureka, CA</span>
+          <span>© 2025 REZIFY · 99 Agents Agency · Eureka, CA</span>
           <span>Built by shop owners who got tired of bad files.</span>
         </div>
       </div>

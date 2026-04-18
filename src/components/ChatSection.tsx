@@ -9,7 +9,7 @@ export default function ChatSection() {
             <div className="chat-topbar">
               <div className="chat-avatar" aria-hidden="true">IR</div>
               <div>
-                <div className="chat-name">InkReady Team</div>
+                <div className="chat-name">REZIFY Team</div>
                 <div className="chat-status">Online now</div>
               </div>
             </div>
@@ -17,7 +17,7 @@ export default function ChatSection() {
               <div>
                 <div className="msg them">
                   Hey! We&apos;re Sean and Matthew — we run a sign shop in Humboldt County and built
-                  InkReady for ourselves first. What questions do you have?
+                  REZIFY for ourselves first. What questions do you have?
                 </div>
                 <div className="msg-time">Sean · just now</div>
               </div>
@@ -49,7 +49,7 @@ export default function ChatSection() {
             <h3>Real Shop Owners.<br />Real Answers.</h3>
             <p>
               We&apos;re not a call center. We&apos;re Sean Knight and Matthew McMahon — we run Lost
-              Coast Signs &amp; Swag in Eureka, CA and 99 Agents Agency. We built InkReady for our own
+              Coast Signs &amp; Swag in Eureka, CA and 99 Agents Agency. We built REZIFY for our own
               shop. We know your questions because we had them first.
             </p>
             <div className="team-cards">

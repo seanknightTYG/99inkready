@@ -15,7 +15,7 @@ const steps = [
     num: '03',
     tag: 'You + Customer · Together',
     title: 'You both approve',
-    body: 'When you both love the concept, you go to your InkReady dashboard and hit Upscale. One click.',
+    body: 'When you both love the concept, you go to your REZIFY dashboard and hit Upscale. One click.',
   },
   {
     num: '04',
@@ -30,7 +30,7 @@ export default function HowItWorks() {
     <section className="how-section" id="how">
       <div className="max-w">
         <div className="section-label">The Solution</div>
-        <h2 className="section-title">InkReady Flips<br />The Script.</h2>
+        <h2 className="section-title">REZIFY Flips<br />The Script.</h2>
         <p className="section-body">
           Your customers design on your website for free. You approve the final concept.
           One click gets you a 300 DPI print-ready file. That&apos;s the whole thing.

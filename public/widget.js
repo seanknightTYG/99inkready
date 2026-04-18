@@ -1,4 +1,4 @@
-"use strict";(()=>{(function(){let c="https://api.inkready.99agents.agency/api/v1",p=document.currentScript||(function(){let n=document.getElementsByTagName("script");return n[n.length-1]})(),l=p.getAttribute("data-shop")||p.getAttribute("data-tenant-id"),d=p.getAttribute("data-primary-color")||"#3b82f6";if(!l){console.error("InkReady Widget: Missing data-shop attribute");return}function b(){let n=localStorage.getItem("inkready_session");return n||(n="sid_"+Math.random().toString(36).substr(2,9)+Date.now().toString(36),localStorage.setItem("inkready_session",n)),n}let g=b(),e={isValid:!1,minimized:!1,draftsUsed:0,draftsRemaining:10,currentImage:null,currentDesignId:null,productType:"tshirt",prompt:"",loading:!1,gateOpen:!1},s=document.createElement("div");s.id="inkready-widget-root",s.style.position="fixed",s.style.bottom="20px",s.style.right="20px",s.style.zIndex="999999",document.body.appendChild(s);let t=s.attachShadow({mode:"open"});function r(){let n=`
+"use strict";(()=>{(function(){let c="https://api.REZIFY.99agents.agency/api/v1",p=document.currentScript||(function(){let n=document.getElementsByTagName("script");return n[n.length-1]})(),l=p.getAttribute("data-shop")||p.getAttribute("data-tenant-id"),d=p.getAttribute("data-primary-color")||"#3b82f6";if(!l){console.error("REZIFY Widget: Missing data-shop attribute");return}function b(){let n=localStorage.getItem("REZIFY_session");return n||(n="sid_"+Math.random().toString(36).substr(2,9)+Date.now().toString(36),localStorage.setItem("REZIFY_session",n)),n}let g=b(),e={isValid:!1,minimized:!1,draftsUsed:0,draftsRemaining:10,currentImage:null,currentDesignId:null,productType:"tshirt",prompt:"",loading:!1,gateOpen:!1},s=document.createElement("div");s.id="REZIFY-widget-root",s.style.position="fixed",s.style.bottom="20px",s.style.right="20px",s.style.zIndex="999999",document.body.appendChild(s);let t=s.attachShadow({mode:"open"});function r(){let n=`
       * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
       .widget-container { width: 360px; background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; border: 1px solid #e5e7eb; display: flex; flex-direction: column; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: bottom right;}
       .header { background: #18181b; color: #fff; padding: 18px 20px; font-weight: 700; border-bottom: 3px solid ${d}; display: flex; justify-content: space-between; align-items: center;}
@@ -27,11 +27,11 @@
     `;if(!e.isValid){if(e.loading)return;t.innerHTML=`
         <style>${n}</style>
         <div class="widget-container">
-          <div class="header">InkReady</div>
+          <div class="header">REZIFY</div>
           <div class="content">
             <div class="msg-box">
-              This shop has not activated InkReady.<br/><br/>
-              <a href="https://99inkready.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99inkready.vercel.app to get started.</a>
+              This shop has not activated REZIFY.<br/><br/>
+              <a href="https://99rezify.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99rezify.vercel.app to get started.</a>
             </div>
           </div>
         </div>

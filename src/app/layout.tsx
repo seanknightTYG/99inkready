@@ -3,14 +3,14 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'InkReady — AI Design Tool for Print Shops',
-  description: 'InkReady is a free AI design widget that lives on your print shop\'s website. Customers generate concepts for free. You approve the one you love. Download a 300 DPI print-ready file in one click.',
-  keywords: 'print shop, AI design, print ready files, 300 DPI, sign shop, custom printing, InkReady',
+  title: 'REZIFY — AI Design Tool for Print Shops',
+  description: 'REZIFY is a free AI design widget that lives on your print shop\'s website. Customers generate concepts for free. You approve the one you love. Download a 300 DPI print-ready file in one click.',
+  keywords: 'print shop, AI design, print ready files, 300 DPI, sign shop, custom printing, REZIFY',
   openGraph: {
-    title: 'InkReady — AI Design Tool for Print Shops',
+    title: 'REZIFY — AI Design Tool for Print Shops',
     description: 'Free AI design widget for print shops. Stop fixing bad client files. Customers design on your site. You approve. One click to a 300 DPI print-ready file.',
-    url: 'https://inkready.99agnts.agency',
-    siteName: 'InkReady',
+    url: 'https://REZIFY.99agnts.agency',
+    siteName: 'REZIFY',
     type: 'website',
   },
 }

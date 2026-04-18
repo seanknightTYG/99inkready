@@ -57,7 +57,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-zinc-950 text-white flex">
       {/* Sidebar */}
       <aside className="w-64 border-r border-white/10 flex flex-col pt-8 bg-black/20">
-        <h1 className="text-2xl font-black tracking-tight mb-10 px-6 text-white">InkReady</h1>
+        <h1 className="text-2xl font-black tracking-tight mb-10 px-6 text-white">REZIFY</h1>
         <nav className="flex-1 space-y-1 px-4">
           {navs.map(n => (
             <Link 

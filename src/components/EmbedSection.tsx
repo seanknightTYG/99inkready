@@ -9,7 +9,7 @@ const options = [
     tag: 'Option 2 · White Glove · $99 One-Time',
     icon: '🤝',
     title: 'We Install It For You',
-    body: '99 Agents Agency builds websites. We can drop InkReady into any existing site — WordPress, Shopify, Squarespace, custom HTML — in under an hour. One-time $99 install fee. Chat with us below.',
+    body: '99 Agents Agency builds websites. We can drop REZIFY into any existing site — WordPress, Shopify, Squarespace, custom HTML — in under an hour. One-time $99 install fee. Chat with us below.',
   },
   {
     tag: 'Option 3 · WordPress',
@@ -26,7 +26,7 @@ export default function EmbedSection() {
         <div className="section-label">Get Started</div>
         <h2 className="section-title">One Line.<br />That&apos;s The Install.</h2>
         <p className="section-body">
-          Drop the snippet into your site and InkReady is live. Our CSS Chameleon script reads your brand
+          Drop the snippet into your site and REZIFY is live. Our CSS Chameleon script reads your brand
           automatically — buttons, fonts, colors — and matches the widget to your site. Zero config.
         </p>
         <div className="embed-layout">
@@ -41,7 +41,7 @@ export default function EmbedSection() {
               <div className="code-body">
                 <span className="comment">{`<!-- Paste before </body> -->`}</span><br /><br />
                 <span className="tag-c">{`<script`}</span><br />
-                &nbsp;&nbsp;<span className="attr">src</span>=<span className="val">{`"https://inkready.99agnts.agency/widget.js"`}</span><br />
+                &nbsp;&nbsp;<span className="attr">src</span>=<span className="val">{`"https://REZIFY.99agnts.agency/widget.js"`}</span><br />
                 &nbsp;&nbsp;<span className="attr">data-shop</span>=<span className="val">{`"YOUR-SHOP-ID"`}</span><br />
                 &nbsp;&nbsp;<span className="attr">async</span><br />
                 <span className="tag-c">{`></script>`}</span>

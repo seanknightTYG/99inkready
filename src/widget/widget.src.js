@@ -1,5 +1,5 @@
 (function() {
-  const API_BASE = 'https://api.inkready.99agents.agency/api/v1';
+  const API_BASE = 'https://api.REZIFY.99agents.agency/api/v1';
 
   const currentScript = document.currentScript || (function() {
     const scripts = document.getElementsByTagName('script');
@@ -10,15 +10,15 @@
   const customColor = currentScript.getAttribute('data-primary-color') || '#3b82f6'; 
 
   if (!shopId) {
-    console.error('InkReady Widget: Missing data-shop attribute');
+    console.error('REZIFY Widget: Missing data-shop attribute');
     return;
   }
 
   function getSessionId() {
-    let sid = localStorage.getItem('inkready_session');
+    let sid = localStorage.getItem('REZIFY_session');
     if (!sid) {
       sid = 'sid_' + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
-      localStorage.setItem('inkready_session', sid);
+      localStorage.setItem('REZIFY_session', sid);
     }
     return sid;
   }
@@ -38,7 +38,7 @@
   };
 
   const container = document.createElement('div');
-  container.id = 'inkready-widget-root';
+  container.id = 'REZIFY-widget-root';
   container.style.position = 'fixed';
   container.style.bottom = '20px';
   container.style.right = '20px';
@@ -81,11 +81,11 @@
       shadow.innerHTML = `
         <style>${style}</style>
         <div class="widget-container">
-          <div class="header">InkReady</div>
+          <div class="header">REZIFY</div>
           <div class="content">
             <div class="msg-box">
-              This shop has not activated InkReady.<br/><br/>
-              <a href="https://99inkready.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99inkready.vercel.app to get started.</a>
+              This shop has not activated REZIFY.<br/><br/>
+              <a href="https://99rezify.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99rezify.vercel.app to get started.</a>
             </div>
           </div>
         </div>

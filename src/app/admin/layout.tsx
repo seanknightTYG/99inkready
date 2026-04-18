@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-zinc-950 text-white flex">
       <aside className="w-64 border-r border-white/10 bg-zinc-950 p-6 flex flex-col">
         <div className="font-black text-2xl tracking-tighter mb-1 mt-2 text-rose-500">
-          INKREADY<span className="text-zinc-600 font-light">ADMIN</span>
+          REZIFY<span className="text-zinc-600 font-light">ADMIN</span>
         </div>
         <div className="text-xs text-rose-500/50 uppercase tracking-widest font-bold mb-10">Superuser</div>
 

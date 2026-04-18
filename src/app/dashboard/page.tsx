@@ -35,7 +35,7 @@ export default function VaultPage() {
       });
       setActiveJob({ id: designId, status: 'queued' });
       
-      const source = new EventSource(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.inkready.99agents.agency'}/api/v1/vault/unlock/${job_id}/stream`);
+      const source = new EventSource(`${process.env.NEXT_PUBLIC_API_URL || 'https://api.REZIFY.99agents.agency'}/api/v1/vault/unlock/${job_id}/stream`);
       source.onmessage = (e) => {
         const data = JSON.parse(e.data);
         setActiveJob({ id: designId, status: data.status });

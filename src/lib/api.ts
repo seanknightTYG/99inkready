@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.inkready.99agents.agency';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.REZIFY.99agents.agency';
 
 export async function fetchWithAuth(endpoint: string, token: string | null, options: RequestInit = {}) {
   const headers = new Headers(options.headers || {});
