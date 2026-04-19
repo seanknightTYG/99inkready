@@ -4,7 +4,7 @@ import { useAuth } from '@clerk/nextjs';
 export default function SettingsPage() {
   const { userId } = useAuth();
   
-  const embedCode = `<script src="https://api.REZIFY.99agents.agency/widget.js" data-tenant-id="${userId || 'YOUR_SHOP_ID'}"></script>`;
+  const embedCode = `<script src="https://api.rezify.io/widget.js" data-tenant-id="${userId || 'YOUR_SHOP_ID'}"></script>`;
 
   return (
     <div className="max-w-3xl space-y-12">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rezify.io — AI Design Tool for Print Shops',
     description: 'Free AI design widget for print shops. Stop fixing bad client files. Customers design on your site. You approve. One click to a 300 DPI print-ready file.',
-    url: 'https://REZIFY.99agnts.agency',
+    url: 'https://rezify.io',
     siteName: 'Rezify.io',
     type: 'website',
   },

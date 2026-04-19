@@ -1,4 +1,4 @@
-"use strict";(()=>{(function(){let c="https://api.REZIFY.99agents.agency/api/v1",p=document.currentScript||(function(){let i=document.getElementsByTagName("script");return i[i.length-1]})(),l=p.getAttribute("data-shop")||p.getAttribute("data-tenant-id"),d=p.getAttribute("data-primary-color")||"#3b82f6";if(!l){console.error("Rezify.io Widget: Missing data-shop attribute");return}function b(){let i=localStorage.getItem("REZIFY_session");return i||(i="sid_"+Math.random().toString(36).substr(2,9)+Date.now().toString(36),localStorage.setItem("REZIFY_session",i)),i}let g=b(),e={isValid:!1,minimized:!1,draftsUsed:0,draftsRemaining:10,currentImage:null,currentDesignId:null,productType:"tshirt",prompt:"",loading:!1,gateOpen:!1},s=document.createElement("div");s.id="REZIFY-widget-root",s.style.position="fixed",s.style.bottom="20px",s.style.right="20px",s.style.zIndex="999999",document.body.appendChild(s);let t=s.attachShadow({mode:"open"});function r(){let i=`
+"use strict";(()=>{(function(){let c="https://api.rezify.io/api/v1",p=document.currentScript||(function(){let i=document.getElementsByTagName("script");return i[i.length-1]})(),l=p.getAttribute("data-shop")||p.getAttribute("data-tenant-id"),d=p.getAttribute("data-primary-color")||"#3b82f6";if(!l){console.error("Rezify.io Widget: Missing data-shop attribute");return}function b(){let i=localStorage.getItem("REZIFY_session");return i||(i="sid_"+Math.random().toString(36).substr(2,9)+Date.now().toString(36),localStorage.setItem("REZIFY_session",i)),i}let g=b(),e={isValid:!1,minimized:!1,draftsUsed:0,draftsRemaining:10,currentImage:null,currentDesignId:null,productType:"tshirt",prompt:"",loading:!1,gateOpen:!1},s=document.createElement("div");s.id="REZIFY-widget-root",s.style.position="fixed",s.style.bottom="20px",s.style.right="20px",s.style.zIndex="999999",document.body.appendChild(s);let t=s.attachShadow({mode:"open"});function r(){let i=`
       * { box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
       .widget-container { width: 360px; background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; border: 1px solid #e5e7eb; display: flex; flex-direction: column; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: bottom right;}
       .header { background: #18181b; color: #fff; padding: 18px 20px; font-weight: 700; border-bottom: 3px solid ${d}; display: flex; justify-content: space-between; align-items: center;}
@@ -31,7 +31,7 @@
           <div class="content">
             <div class="msg-box">
               This shop has not activated Rezify.io.<br/><br/>
-              <a href="https://99rezify.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99rezify.vercel.app to get started.</a>
+              <a href="https://rezify.io" target="_blank" style="color:#b91c1c; font-weight:700;">Visit rezify.io to get started.</a>
             </div>
           </div>
         </div>

@@ -41,7 +41,7 @@ export default function EmbedSection() {
               <div className="code-body">
                 <span className="comment">{`<!-- Paste before </body> -->`}</span><br /><br />
                 <span className="tag-c">{`<script`}</span><br />
-                &nbsp;&nbsp;<span className="attr">src</span>=<span className="val">{`"https://REZIFY.99agnts.agency/widget.js"`}</span><br />
+                &nbsp;&nbsp;<span className="attr">src</span>=<span className="val">{`"https://api.rezify.io/widget.js"`}</span><br />
                 &nbsp;&nbsp;<span className="attr">data-shop</span>=<span className="val">{`"YOUR-SHOP-ID"`}</span><br />
                 &nbsp;&nbsp;<span className="attr">async</span><br />
                 <span className="tag-c">{`></script>`}</span>

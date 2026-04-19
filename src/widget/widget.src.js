@@ -1,5 +1,5 @@
 (function() {
-  const API_BASE = 'https://api.REZIFY.99agents.agency/api/v1';
+  const API_BASE = 'https://api.rezify.io/api/v1';
 
   const currentScript = document.currentScript || (function() {
     const scripts = document.getElementsByTagName('script');
@@ -85,7 +85,7 @@
           <div class="content">
             <div class="msg-box">
               This shop has not activated Rezify.io.<br/><br/>
-              <a href="https://99rezify.vercel.app" target="_blank" style="color:#b91c1c; font-weight:700;">Visit 99rezify.vercel.app to get started.</a>
+              <a href="https://rezify.io" target="_blank" style="color:#b91c1c; font-weight:700;">Visit rezify.io to get started.</a>
             </div>
           </div>
         </div>
