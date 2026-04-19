@@ -20,7 +20,7 @@ export default function TenantDetail() {
     try {
        const token = await getToken();
        if (token) {
-         const res = await fetchWithAuth(\`/api/v1/admin/tenants/\${id}\`, token);
+         const res = await fetchWithAuth(`/api/v1/admin/tenants/${id}`, token);
          setData(res);
        }
     } catch (e) {
@@ -40,7 +40,7 @@ export default function TenantDetail() {
     setAdjusting(true);
     try {
       const token = await getToken();
-      await fetchWithAuth(\`/api/v1/admin/tenants/\${id}/credits\`, token, {
+      await fetchWithAuth(`/api/v1/admin/tenants/${id}/credits`, token, {
         method: 'POST',
         body: JSON.stringify({ amount: amt })
       });
