@@ -85,8 +85,27 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <div className="border-l border-white/10 h-6"></div>
           <UserButton />
         </header>
-        <main className="flex-1 p-10 overflow-y-auto max-h-[calc(100vh-72px)] bg-zinc-950">
-          {children}
+        <main className="flex-1 p-10 overflow-y-auto max-h-[calc(100vh-72px)] bg-zinc-950 flex flex-col">
+          <div className="flex-1">
+            {children}
+          </div>
+          <footer className="mt-20 border border-rose-500/30 bg-rose-500/5 p-6 rounded-xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-2 h-full bg-rose-500"></div>
+            <div className="text-rose-400 font-bold mb-4 flex items-center gap-2 text-sm uppercase tracking-widest pl-2">
+              ⚠️ Testing Links — Remove Before Launch
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm pl-2">
+              <Link href="/test/widget" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">ABC Print Shop Widget</Link>
+              <Link href="/admin" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Admin Dashboard</Link>
+              <Link href="/dashboard" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Client Dashboard</Link>
+              <Link href="/sign-in?redirect=/admin" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Admin Login</Link>
+              <span className="w-px bg-white/10 h-4 self-center mx-2"></span>
+              <Link href="/dashboard" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Art Vault</Link>
+              <Link href="/dashboard/leads" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Leads</Link>
+              <Link href="/dashboard/credits" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Credits</Link>
+              <Link href="/dashboard/settings" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Settings</Link>
+            </div>
+          </footer>
         </main>
       </div>
     </div>
