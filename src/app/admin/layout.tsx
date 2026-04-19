@@ -13,7 +13,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     if (isLoaded) {
-      if (sessionClaims?.metadata?.role === 'admin') {
+      if ((sessionClaims as any)?.metadata?.role === 'admin') {
         setIsAdmin(true);
       } else {
         router.push('/dashboard');
@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-zinc-950 text-white flex">
       <aside className="w-64 border-r border-white/10 bg-zinc-950 p-6 flex flex-col">
         <div className="font-black text-2xl tracking-tighter mb-1 mt-2 text-rose-500">
-          REZIFY<span className="text-zinc-600 font-light">ADMIN</span>
+          Rezify.io<span className="text-zinc-600 font-light">ADMIN</span>
         </div>
         <div className="text-xs text-rose-500/50 uppercase tracking-widest font-bold mb-10">Superuser</div>
 
@@ -45,11 +45,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Link 
                 key={n.path} 
                 href={n.path}
-                className={\`block px-4 py-3 rounded-lg text-sm font-semibold transition-all \${
+                className={`block px-4 py-3 rounded-lg text-sm font-semibold transition-all ${
                   active 
                     ? 'bg-rose-500/10 text-rose-400' 
                     : 'text-zinc-400 hover:text-white hover:bg-zinc-900'
-                }\`}
+                }`}
               >
                 {n.label}
               </Link>

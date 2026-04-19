@@ -1,5 +1,5 @@
 'use client';
-import { UserButton, useAuth } from '@clerk/nextjs';
+import { UserButton, useAuth, useUser } from '@clerk/nextjs';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -7,7 +7,9 @@ import { fetchWithAuth } from '@/lib/api';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const { getToken, isLoaded, user } = useAuth();
+  const { getToken, isLoaded: authLoaded } = useAuth();
+  const { user, isLoaded: userLoaded } = useUser();
+  const isLoaded = authLoaded && userLoaded;
   const [balance, setBalance] = useState<number>(0);
   const [isReady, setIsReady] = useState<boolean>(false);
 
@@ -57,7 +59,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-zinc-950 text-white flex">
       {/* Sidebar */}
       <aside className="w-64 border-r border-white/10 flex flex-col pt-8 bg-black/20">
-        <h1 className="text-2xl font-black tracking-tight mb-10 px-6 text-white">REZIFY</h1>
+        <h1 className="text-2xl font-black tracking-tight mb-10 px-6 text-white">Rezify.io</h1>
         <nav className="flex-1 space-y-1 px-4">
           {navs.map(n => (
             <Link 
