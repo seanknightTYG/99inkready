@@ -1,61 +1,63 @@
 'use client'
 import { useState } from 'react'
+import { useAuth, useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.rezify.io'
 
 const packs = [
-  {
-    name: 'Starter',
-    files: '10 downloads',
-    bonus: null,
-    price: '$69',
-    cents: '.00',
-    per: '$6.90 per file',
-    featured: false,
-    badge: null,
-  },
-  {
-    name: 'Shop Pack',
-    files: '25 downloads',
-    bonus: null,
-    price: '$149',
-    cents: '.00',
-    per: '$5.96 per file',
-    featured: false,
-    badge: null,
-  },
-  {
-    name: 'Pro Pack',
-    files: '50 downloads + ',
-    bonus: '10 FREE',
-    price: '$229',
-    cents: '.00',
-    per: '$3.82 per file effective',
-    featured: true,
-    badge: 'Most Popular · First-Time Bonus',
-  },
-  {
-    name: 'Bulk Pack',
-    files: '100 downloads + ',
-    bonus: '25 FREE',
-    price: '$399',
-    cents: '.00',
-    per: '$3.19 per file effective',
-    featured: false,
-    badge: 'First-Time Bonus',
-  },
-  {
-    name: 'Studio Pack',
-    files: '250 downloads + ',
-    bonus: '50 FREE',
-    price: '$849',
-    cents: '.00',
-    per: '$2.83 per file effective',
-    featured: false,
-    badge: 'First-Time Bonus',
-  },
+  { id: 'starter',     name: 'Starter',    files: '10 downloads',       bonus: null,     price: '$69',  cents: '.00', per: '$6.90 per file',           featured: false, badge: null },
+  { id: 'shop_pack',   name: 'Shop Pack',  files: '25 downloads',       bonus: null,     price: '$149', cents: '.00', per: '$5.96 per file',           featured: false, badge: null },
+  { id: 'pro_pack',    name: 'Pro Pack',   files: '50 downloads + ',    bonus: '10 FREE', price: '$229', cents: '.00', per: '$3.82 per file effective', featured: true,  badge: 'Most Popular · First-Time Bonus' },
+  { id: 'bulk_pack',   name: 'Bulk Pack',  files: '100 downloads + ',   bonus: '25 FREE', price: '$399', cents: '.00', per: '$3.19 per file effective', featured: false, badge: 'First-Time Bonus' },
+  { id: 'studio_pack', name: 'Studio Pack', files: '250 downloads + ',  bonus: '50 FREE', price: '$849', cents: '.00', per: '$2.83 per file effective', featured: false, badge: 'First-Time Bonus' },
 ]
 
 export default function Pricing() {
   const [isAnnual, setIsAnnual] = useState(true)
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null)
+  const { isSignedIn, getToken } = useAuth()
+  const { user } = useUser()
+  const router = useRouter()
+
+  // ── Subscribe to a plan ─────────────────────────────────
+  const handleSubscribe = async (planId: string) => {
+    if (!isSignedIn) {
+      router.push('/sign-in?redirect_url=/#pricing')
+      return
+    }
+    setLoadingPlan(planId)
+    try {
+      const token = await getToken()
+      const res = await fetch(`${API_URL}/api/v1/subscribe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ planId, tenantId: user?.id }),
+      })
+      const data = await res.json()
+      if (res.ok && data.checkoutUrl) {
+        window.location.href = data.checkoutUrl
+      } else {
+        alert('Something went wrong. Please try again.')
+      }
+    } catch {
+      alert('Something went wrong. Please try again.')
+    } finally {
+      setLoadingPlan(null)
+    }
+  }
+
+  // ── Credit pack → redirect to dashboard ─────────────────
+  const handleBuyPack = () => {
+    if (!isSignedIn) {
+      router.push('/sign-in?redirect_url=/dashboard/credits')
+      return
+    }
+    router.push('/dashboard/credits')
+  }
 
   return (
     <section className="pricing-section" id="pricing">
@@ -101,7 +103,13 @@ export default function Pricing() {
               </span>
             </div>
             {isAnnual && <div className="plan-monthly-equiv">≈ $17.42/mo · Save $19</div>}
-            <a href="#embed" className="pack-cta">Get Started</a>
+            <button
+              onClick={() => handleSubscribe(isAnnual ? 'shop_annual' : 'shop_monthly')}
+              disabled={loadingPlan === 'shop_annual' || loadingPlan === 'shop_monthly'}
+              className="pack-cta"
+            >
+              {loadingPlan === 'shop_annual' || loadingPlan === 'shop_monthly' ? 'Loading…' : 'Get Started'}
+            </button>
           </div>
 
           {/* Studio Plan */}
@@ -117,7 +125,13 @@ export default function Pricing() {
               </span>
             </div>
             {isAnnual && <div className="plan-monthly-equiv">≈ $26.58/mo · Save $29</div>}
-            <a href="#embed" className="pack-cta">Get Started</a>
+            <button
+              onClick={() => handleSubscribe(isAnnual ? 'studio_annual' : 'studio_monthly')}
+              disabled={loadingPlan === 'studio_annual' || loadingPlan === 'studio_monthly'}
+              className="pack-cta"
+            >
+              {loadingPlan === 'studio_annual' || loadingPlan === 'studio_monthly' ? 'Loading…' : 'Get Started'}
+            </button>
           </div>
         </div>
 
@@ -137,7 +151,9 @@ export default function Pricing() {
                 {pack.price}<span className="cents">{pack.cents}</span>
               </div>
               <div className="pack-per">{pack.per}</div>
-              <a href="#embed" className="pack-cta">Get Started</a>
+              <button onClick={handleBuyPack} className="pack-cta">
+                Get Started
+              </button>
             </div>
           ))}
         </div>

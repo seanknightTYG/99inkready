@@ -1,3 +1,7 @@
+'use client'
+import { useAuth } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
+
 const options = [
   {
     tag: 'Option 1 · DIY',
@@ -20,6 +24,24 @@ const options = [
 ]
 
 export default function EmbedSection() {
+  const { isSignedIn } = useAuth()
+  const router = useRouter()
+
+  const handleGetShopId = () => {
+    if (isSignedIn) {
+      router.push('/dashboard/settings')
+    } else {
+      router.push('/sign-in?redirect_url=/dashboard/settings')
+    }
+  }
+
+  const handleInstallForMe = () => {
+    const chatSection = document.getElementById('chat')
+    if (chatSection) {
+      chatSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section className="embed-section" id="embed">
       <div className="max-w">
@@ -48,12 +70,12 @@ export default function EmbedSection() {
               </div>
             </div>
             <div style={{ marginTop: '1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <a href="#chat" className="btn-primary" style={{ fontSize: '12px', padding: '11px 22px' }}>
+              <button onClick={handleGetShopId} className="btn-primary" style={{ fontSize: '12px', padding: '11px 22px', cursor: 'pointer' }}>
                 Get My Shop ID →
-              </a>
-              <a href="#chat" className="btn-ghost" style={{ fontSize: '12px', padding: '11px 22px' }}>
+              </button>
+              <button onClick={handleInstallForMe} className="btn-ghost" style={{ fontSize: '12px', padding: '11px 22px', cursor: 'pointer' }}>
                 Our Team Will Install It
-              </a>
+              </button>
             </div>
           </div>
           <div className="embed-options">

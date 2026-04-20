@@ -22,7 +22,7 @@ export default function Hero() {
         </p>
         <p className="hero-sub hero-sub-model fade-up delay-2">
           Powered by benchmark-tested AI image models — we run the latest, highest-performing generation
-          engine available. Currently: <strong>Gemini 3.1 Flash Image.</strong> We update automatically
+          engine available. Currently: <strong>Gemini 3 Pro Image (Nano Banana Pro).</strong> We update automatically
           as better models ship. Your shop always gets the best.
         </p>
         <div className="hero-actions fade-up delay-2">
