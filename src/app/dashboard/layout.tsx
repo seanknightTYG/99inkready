@@ -95,7 +95,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               ⚠️ Testing Links — Remove Before Launch
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm pl-2">
-              <Link href="/test/widget" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">ABC Print Shop Widget</Link>
+              <Link href="/test/widget" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">ABC Print Shop Studio</Link>
               <Link href="/admin" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Admin Dashboard</Link>
               <Link href="/dashboard" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Client Dashboard</Link>
               <Link href="/sign-in?redirect=/admin" className="text-zinc-400 hover:text-white transition-colors hover:underline underline-offset-4">Admin Login</Link>

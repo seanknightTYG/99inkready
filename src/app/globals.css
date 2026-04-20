@@ -715,6 +715,136 @@ section { padding: 6rem 2rem; }
 }
 .pricing-note span { color: var(--orange); }
 
+/* Billing toggle (new in Pricing V2) */
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.billing-toggle-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--gray2);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.billing-toggle-label.active { color: var(--paper); font-weight: 700; }
+.billing-toggle-save {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  background: rgba(232,83,10,0.15);
+  color: var(--orange);
+  border-radius: 20px;
+  font-weight: 700;
+}
+.billing-toggle-switch {
+  width: 52px;
+  height: 28px;
+  background: var(--ink3);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+}
+.billing-toggle-switch:hover { border-color: var(--orange); }
+.billing-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gray);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s;
+}
+.billing-toggle-thumb.annual {
+  transform: translateX(24px);
+  background: var(--orange);
+}
+
+/* Subscription plan cards (Pricing V2) */
+.pricing-plans-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.pricing-plan-card {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.2s, background 0.3s;
+  position: relative;
+}
+.pricing-plan-card:hover { border-color: var(--orange); transform: translateY(-3px); }
+.pricing-plan-card.plan-highlighted {
+  border-color: rgba(232,83,10,0.5);
+  background: rgba(232,83,10,0.03);
+}
+.plan-free-badge {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  padding: 4px 14px;
+  background: var(--orange);
+  color: var(--on-green);
+  font-weight: 700;
+  border-radius: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.plan-tier {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  margin-bottom: 0.75rem;
+}
+.plan-price-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.plan-price-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--white);
+}
+.plan-price-cycle {
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: var(--gray);
+}
+.plan-monthly-equiv {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--orange);
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 480px) {
+  .pricing-plans-row { grid-template-columns: 1fr; }
+}
+
 /* ── EMBED ── */
 .embed-section { background: var(--ink); }
 .embed-layout {

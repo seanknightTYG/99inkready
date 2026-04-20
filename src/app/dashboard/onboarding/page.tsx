@@ -30,7 +30,7 @@ export default function OnboardingPage() {
         </div>
         <h1 className="text-4xl font-black mb-4 tracking-tight">Secure Your Realm</h1>
         <p className="text-zinc-400 text-lg mb-10 leading-relaxed">
-          Your shop is registered. To activate your API keys and unlock your raw widget embed script, you must secure a Starter Pack. This ensures only highly-motivated print shops access our AI GPUs.
+          Your shop is registered. To activate your API keys and unlock your raw Rezify Studio embed script, you must secure a Starter Pack. This ensures only highly-motivated print shops access our AI GPUs.
         </p>
         
         <div className="bg-zinc-950 border border-white/5 p-6 rounded-xl mb-10 text-left">
@@ -47,7 +47,7 @@ export default function OnboardingPage() {
           disabled={loading}
           className="w-full bg-blue-600 hover:bg-blue-500 disabled:bg-blue-900 text-white font-bold py-4 rounded-xl text-lg shadow-xl shadow-blue-900/20 transition-all transform active:scale-95"
         >
-          {loading ? 'Securing Gateway...' : 'Activate Widget & Buy Starter Pack'}
+          {loading ? 'Securing Gateway...' : 'Activate Rezify Studio & Buy Starter Pack'}
         </button>
       </div>
     </div>

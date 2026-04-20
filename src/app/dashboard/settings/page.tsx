@@ -9,7 +9,7 @@ export default function SettingsPage() {
   return (
     <div className="max-w-3xl space-y-12">
       <div>
-        <h2 className="text-3xl font-bold mb-2 tracking-tight">Widget Settings</h2>
+        <h2 className="text-3xl font-bold mb-2 tracking-tight">Rezify Studio Settings</h2>
         <p className="text-zinc-400">Configure your website integration and look/feel.</p>
       </div>
 
@@ -39,7 +39,7 @@ export default function SettingsPage() {
 
       <section className="bg-zinc-900 border border-white/5 p-8 rounded-2xl shadow-xl">
         <h3 className="text-xl font-bold mb-1 border-b-2 border-blue-500 inline-block pb-1">Brand Customization</h3>
-        <p className="text-zinc-400 text-sm mt-3 mb-8">Customize the look and feel of the widget to match your website natively.</p>
+        <p className="text-zinc-400 text-sm mt-3 mb-8">Customize the look and feel of the Rezify Studio to match your website natively.</p>
         
         <div className="space-y-6">
           <div>

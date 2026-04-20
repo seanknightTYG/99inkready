@@ -15,7 +15,7 @@ export default function Hero() {
           <span className="accent">Art.</span>
         </h1>
         <p className="hero-sub fade-up delay-1">
-          <strong>Rezify.io</strong> tool is a free AI design widget that lives on your print shop&apos;s website.
+          <strong>Rezify.io</strong> tool is a free AI design studio that lives on your print shop&apos;s website.
           Your customers bring the ideas — your shop brings the print. They generate concepts until they nail it.
           You both agree on the final design. One click gets you a 300 DPI print-ready file.{' '}
           <strong>From your customer&apos;s imagination to your embellishment — no bad files, no free design hours, no infinite email loops.</strong>

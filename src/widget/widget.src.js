@@ -10,7 +10,7 @@
   const customColor = currentScript.getAttribute('data-primary-color') || '#3b82f6'; 
 
   if (!shopId) {
-    console.error('Rezify.io Widget: Missing data-shop attribute');
+    console.error('Rezify.io Studio: Missing data-shop attribute');
     return;
   }
 

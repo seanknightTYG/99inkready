@@ -1,8 +1,8 @@
 const screens = [
   {
     icon: '🎨',
-    label: 'Screenshot Coming Soon\nCustomer Widget View',
-    title: 'The Customer Widget',
+    label: 'Screenshot Coming Soon\nCustomer Rezify Studio View',
+    title: 'The Customer Rezify Studio',
     desc: 'Live on your site. Matches your brand automatically. Customers generate concepts until they love one.',
   },
   {

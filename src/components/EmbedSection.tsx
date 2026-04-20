@@ -27,7 +27,7 @@ export default function EmbedSection() {
         <h2 className="section-title">One Line.<br />That&apos;s The Install.</h2>
         <p className="section-body">
           Drop the snippet into your site and Rezify.io is live. Our CSS Chameleon script reads your brand
-          automatically — buttons, fonts, colors — and matches the widget to your site. Zero config.
+          automatically — buttons, fonts, colors — and matches the Rezify Studio to your site. Zero config.
         </p>
         <div className="embed-layout">
           <div>
