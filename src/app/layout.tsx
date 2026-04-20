@@ -4,11 +4,11 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Rezify.io — AI Design Tool for Print Shops',
-  description: 'Rezify.io is a free AI design widget that lives on your print shop\'s website. Customers generate concepts for free. You approve the one you love. Download a 300 DPI print-ready file in one click.',
+  description: 'Rezify.io is a free AI design studio that lives on your print shop\'s website. Customers generate concepts for free. You approve the one you love. Download a 300 DPI print-ready file in one click.',
   keywords: 'print shop, AI design, print ready files, 300 DPI, sign shop, custom printing, Rezify.io',
   openGraph: {
     title: 'Rezify.io — AI Design Tool for Print Shops',
-    description: 'Free AI design widget for print shops. Stop fixing bad client files. Customers design on your site. You approve. One click to a 300 DPI print-ready file.',
+    description: 'Free AI design studio for print shops. Stop fixing bad client files. Customers design on your site. You approve. One click to a 300 DPI print-ready file.',
     url: 'https://rezify.io',
     siteName: 'Rezify.io',
     type: 'website',

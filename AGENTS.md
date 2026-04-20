@@ -8,7 +8,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Project: Rezify
 
-**Product:** AI-powered design widget for print shops at **rezify.io**. Customers embed a widget on their site, end users generate designs with AI, shop owners approve and download print-ready files using credits.
+**Product:** AI-powered Rezify Studio for print shops at **rezify.io**. Customers embed the Rezify Studio on their site, end users generate designs with AI, shop owners approve and download print-ready files using credits.
 
 **Repos:**
 - Frontend (Next.js / Vercel): `seanknightTYG/rezify`
@@ -84,7 +84,7 @@ First-time bonus tracked in `tenant_pack_history`, applied once per tier per ten
 - **Subscription enforcement**: `/api/v1/generate` returns `402` when `subscription_status = 'canceled'` or `past_due` beyond 7-day grace period
 - **Webhook idempotency**: All Stripe events logged to `webhook_events` with unique `stripe_event_id` — duplicates are skipped
 - **Credit transactions**: All DB writes touching `credits` or `subscription_status` are wrapped in transactions with `BEGIN/COMMIT/ROLLBACK`
-- **Widget messages**: Error messages on the widget are customer-neutral — they never expose Rezify subscription details to end customers
+- **Rezify Studio messages**: Error messages on the Rezify Studio are customer-neutral — they never expose Rezify subscription details to end customers
 
 ---
 
@@ -105,7 +105,7 @@ First-time bonus tracked in `tenant_pack_history`, applied once per tier per ten
 2. **Always work on a feature branch** — never commit directly to `main`
 3. **All DB writes touching credits or subscription_status must be in transactions** — `BEGIN` / `COMMIT` / `ROLLBACK` with proper error handling
 4. **Never change the Gemini model string** without explicit instruction from Sean
-5. **Widget error messages must be customer-neutral** — never expose Rezify subscription details to end customers
+5. **Rezify Studio error messages must be customer-neutral** — never expose Rezify subscription details to end customers
 6. **Do not touch the RunPod / Real-ESRGAN upscale pipeline** unless explicitly asked
 7. **Do not touch the lead capture system** unless explicitly asked
 8. **Do not touch the watermarking logic** unless explicitly asked

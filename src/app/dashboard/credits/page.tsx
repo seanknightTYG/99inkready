@@ -179,7 +179,7 @@ export default function CreditsPage() {
         <section>
           <div className="mb-8">
             <h2 className="text-3xl font-bold tracking-tight">Choose Your Plan</h2>
-            <p className="text-zinc-400 mt-1">Subscribe to keep your widget live and your dashboard running.</p>
+            <p className="text-zinc-400 mt-1">Subscribe to keep your Rezify Studio live and your dashboard running.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

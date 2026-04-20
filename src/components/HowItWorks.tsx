@@ -3,7 +3,7 @@ const steps = [
     num: '01',
     tag: 'You · 60 seconds',
     title: 'Paste the snippet',
-    body: 'One line of code on your site. Our script reads your brand colors and fonts and matches the widget automatically. No dev required.',
+    body: 'One line of code on your site. Our script reads your brand colors and fonts and matches the Rezify Studio automatically. No dev required.',
   },
   {
     num: '02',

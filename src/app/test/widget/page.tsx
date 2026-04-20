@@ -26,9 +26,9 @@ export default function WidgetTestPage() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex flex-col items-center pt-32 px-6">
-      <h1 className="text-4xl font-bold tracking-tight mb-4 text-center">ABC Print Shop — Widget Test</h1>
+      <h1 className="text-4xl font-bold tracking-tight mb-4 text-center">ABC Print Shop — Rezify Studio Test</h1>
       <p className="text-zinc-400 mb-8 max-w-xl text-center">
-        The widget snippet has been embedded below using Tenant ID: 
+        The Rezify Studio snippet has been embedded below using Tenant ID: 
         <br/><strong className="text-emerald-400 font-mono mt-2 inline-block">{testTenantId}</strong>
       </p>
       
@@ -39,7 +39,7 @@ export default function WidgetTestPage() {
         <div className="h-4 bg-zinc-800 rounded w-4/6"></div>
         
         <p className="text-zinc-500 mt-8 italic text-sm text-center">
-          Mock client website page. Widget should appear in the bottom right corner.
+          Mock client website page. Rezify Studio should appear in the bottom right corner.
         </p>
       </div>
     </div>

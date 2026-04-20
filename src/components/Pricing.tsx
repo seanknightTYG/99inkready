@@ -1,17 +1,5 @@
-const plans = [
-  {
-    tier: 'Shop',
-    monthly: '$19',
-    annual: '$209',
-    saveBadge: 'Save $19',
-  },
-  {
-    tier: 'Studio',
-    monthly: '$29',
-    annual: '$319',
-    saveBadge: 'Save $29',
-  },
-]
+'use client'
+import { useState } from 'react'
 
 const packs = [
   {
@@ -67,35 +55,73 @@ const packs = [
 ]
 
 export default function Pricing() {
+  const [isAnnual, setIsAnnual] = useState(true)
+
   return (
     <section className="pricing-section" id="pricing">
       <div className="max-w">
         <div className="section-label">Pricing</div>
         <h2 className="section-title">Subscribe +<br />Pay What You Print.</h2>
         <p className="section-body">
-          Pick <strong style={{color: 'var(--paper)'}}>Shop ($19/mo)</strong> or <strong style={{color: 'var(--paper)'}}>Studio ($29/mo)</strong> to
-          keep your widget live and your dashboard running. Go annual and get <strong style={{color: 'var(--paper)'}}>1 month free</strong>.
+          Pick <strong style={{color: 'var(--paper)'}}>Shop</strong> or <strong style={{color: 'var(--paper)'}}>Studio</strong> to
+          keep your Rezify Studio live and your dashboard running. Go annual and get <strong style={{color: 'var(--paper)'}}>1 month free</strong>.
           Then buy a credit pack — credits fire only when you and your customer
           approve a final design and you download the print-ready file. No seat fees. No surprises.
         </p>
 
-        {/* Subscription Plans */}
-        <div className="pricing-plans-row">
-          {plans.map((plan) => (
-            <div key={plan.tier} className="pricing-plan-card">
-              <div className="plan-tier">{plan.tier}</div>
-              <div className="plan-prices">
-                <span className="plan-monthly">{plan.monthly}<span className="plan-period">/mo</span></span>
-                <span className="plan-divider">or</span>
-                <span className="plan-annual">{plan.annual}<span className="plan-period">/yr</span></span>
-              </div>
-              <div className="plan-save-badge">{plan.saveBadge} — 1 month free</div>
-              <a href="#embed" className="pack-cta">Get Started</a>
-            </div>
-          ))}
+        {/* ── Monthly / Annual Toggle ── */}
+        <div className="billing-toggle">
+          <span className={`billing-toggle-label ${!isAnnual ? 'active' : ''}`}>Monthly</span>
+          <button
+            className="billing-toggle-switch"
+            onClick={() => setIsAnnual(!isAnnual)}
+            aria-label="Toggle billing cycle"
+            type="button"
+          >
+            <span className={`billing-toggle-thumb ${isAnnual ? 'annual' : ''}`} />
+          </button>
+          <span className={`billing-toggle-label ${isAnnual ? 'active' : ''}`}>
+            Annual
+            <span className="billing-toggle-save">Save 1 month</span>
+          </span>
         </div>
 
-        {/* Credit Packs */}
+        {/* ── Subscription Plans ── */}
+        <div className="pricing-plans-row">
+          {/* Shop Plan */}
+          <div className={`pricing-plan-card ${isAnnual ? 'plan-highlighted' : ''}`}>
+            {isAnnual && <div className="plan-free-badge">1 Month Free</div>}
+            <div className="plan-tier">Shop</div>
+            <div className="plan-price-display">
+              <span className="plan-price-amount">
+                {isAnnual ? '$209' : '$19'}
+              </span>
+              <span className="plan-price-cycle">
+                {isAnnual ? '/yr' : '/mo'}
+              </span>
+            </div>
+            {isAnnual && <div className="plan-monthly-equiv">≈ $17.42/mo · Save $19</div>}
+            <a href="#embed" className="pack-cta">Get Started</a>
+          </div>
+
+          {/* Studio Plan */}
+          <div className={`pricing-plan-card ${isAnnual ? 'plan-highlighted' : ''}`}>
+            {isAnnual && <div className="plan-free-badge">1 Month Free</div>}
+            <div className="plan-tier">Studio</div>
+            <div className="plan-price-display">
+              <span className="plan-price-amount">
+                {isAnnual ? '$319' : '$29'}
+              </span>
+              <span className="plan-price-cycle">
+                {isAnnual ? '/yr' : '/mo'}
+              </span>
+            </div>
+            {isAnnual && <div className="plan-monthly-equiv">≈ $26.58/mo · Save $29</div>}
+            <a href="#embed" className="pack-cta">Get Started</a>
+          </div>
+        </div>
+
+        {/* ── Credit Packs (not affected by toggle) ── */}
         <div className="pricing-grid">
           {packs.map((pack) => (
             <div key={pack.name} className={`pricing-card${pack.featured ? ' featured' : ''}`}>
@@ -116,7 +142,7 @@ export default function Pricing() {
           ))}
         </div>
         <div className="pricing-note">
-          <span>Shop ($19/mo) or Studio ($29/mo) keeps your widget active and dashboard running. Annual saves 1 month.</span><br />
+          <span>Shop ($19/mo) or Studio ($29/mo) keeps your Rezify Studio active and dashboard running. Annual saves 1 month.</span><br />
           First-time bonus applies to Pro, Bulk, and Studio packs on your first purchase only.<br />
           <span>Customers always generate free. Credits fire only on approved final downloads.</span><br />
           Invoice your customer whatever you want — $35, $50, $75. You keep 100%.
